@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BusDoor Monitor — NIIT University Synapse Project</title>
+  <meta name="description" content="Bus Luggage Compartment Door Monitoring System — IoT Dashboard — NIIT University Synapse Project" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2300e5ff'/><text y='24' x='4' font-size='22'>🚌</text></svg>" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════ -->
+<nav class="navbar">
+  <a href="#" class="nav-brand" onclick="showPage('page-home'); return false;">
+    <div class="nav-logo">BM</div>
+    <div>
+      <div class="nav-title">BusDoor Monitor</div>
+      <div class="nav-sub">NIIT University · Synapse</div>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#" data-page="page-home">Home</a></li>
+    <li><a href="#" data-page="page-dashboard">Dashboard</a></li>
+    <li><a href="#" data-page="page-architecture">Architecture</a></li>
+    <li><a href="#" data-page="page-sensors">Sensors</a></li>
+    <li><a href="#" data-page="page-alerts">Alerts</a></li>
+    <li><a href="#" data-page="page-working">Working</a></li>
+    <li><a href="#" data-page="page-cost">Cost</a></li>
+    <li><a href="#" data-page="page-timeline">Timeline</a></li>
+    <li><a href="#" data-page="page-team">Team</a></li>
+    <li><a href="#" data-page="page-gallery">Gallery</a></li>
+    <li><a href="#" data-page="page-contact">Contact</a></li>
+  </ul>
+
+  <div style="display:flex; align-items:center; gap:1rem;">
+    <div class="nav-status">
+      <span class="status-dot"></span>
+      <span>SYSTEM ONLINE</span>
+    </div>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="page-wrapper">
+
+<!-- ══════════════════════════════════════
+     HOME PAGE
+══════════════════════════════════════ -->
+<section id="page-home" class="page-section">
+
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+
+      <div class="hero-badge">
+        <span>🚌</span>
+        <span>NIIT UNIVERSITY · SYNAPSE PROJECT · 2024</span>
+      </div>
+
+      <h1>Bus Luggage Compartment<br/>Door Monitoring System</h1>
+
+      <p class="hero-desc">
+        A low-cost embedded IoT system that continuously monitors bus luggage compartment doors
+        for correct locking, abnormal vibrations, and unexpected openings — preventing accidents
+        and improving passenger safety in real time.
+      </p>
+
+      <div class="hero-cta">
+        <button class="btn btn-primary" data-goto="page-dashboard">
+          📊 Live Dashboard
+        </button>
+        <button class="btn btn-outline" data-goto="page-architecture">
+          🔧 Architecture
+        </button>
+      </div>
+
+      <!-- Flow Diagram -->
+      <div class="flow-diagram">
+        <div class="flow-item">
+          <span class="flow-icon">🔬</span>
+          <span class="flow-label">Sensors</span>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-item">
+          <span class="flow-icon">💻</span>
+          <span class="flow-label">ESP32 MCU</span>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-item">
+          <span class="flow-icon">⚙️</span>
+          <span class="flow-label">Processing</span>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-item">
+          <span class="flow-icon">🚨</span>
+          <span class="flow-label">Alerts</span>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-item">
+          <span class="flow-icon">📱</span>
+          <span class="flow-label">Dashboard</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num text-cyan">3</span>
+      <span class="stat-label">Sensor Types</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num text-green">24/7</span>
+      <span class="stat-label">Monitoring</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num text-cyan">&#60;1s</span>
+      <span class="stat-label">Alert Latency</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num text-green">₹1,401</span>
+      <span class="stat-label">Est. Cost</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num text-cyan">10</span>
+      <span class="stat-label">Team Members</span>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag">About the Project</span>
+      <h2 class="section-title">What Problem Are We Solving?</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div style="font-size:2.5rem; margin-bottom:1rem;">⚠️</div>
+        <h3 class="font-display mb-2" style="font-size:1rem; color:var(--accent-cyan)">The Problem</h3>
+        <p class="text-muted" style="font-size:0.88rem; line-height:1.6">
+          Bus luggage compartment doors are often left unsecured, causing baggage to fall and potentially creating road hazards. There's no automated way to monitor these doors in real time.
+        </p>
+      </div>
+      <div class="card">
+        <div style="font-size:2.5rem; margin-bottom:1rem;">🔬</div>
+        <h3 class="font-display mb-2" style="font-size:1rem; color:var(--accent-cyan)">Our Solution</h3>
+        <p class="text-muted" style="font-size:0.88rem; line-height:1.6">
+          An ESP32-based embedded system using vibration sensors, magnetic reed switches, and a camera module to monitor door state 24/7 and alert the driver immediately if any anomaly is detected.
+        </p>
+      </div>
+      <div class="card">
+        <div style="font-size:2.5rem; margin-bottom:1rem;">🎯</div>
+        <h3 class="font-display mb-2" style="font-size:1rem; color:var(--accent-cyan)">Impact</h3>
+        <p class="text-muted" style="font-size:0.88rem; line-height:1.6">
+          Prevents luggage loss and road accidents, improves fleet safety, provides actionable data for maintenance teams, and is scalable across any bus fleet at minimal cost.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ══════════════════════════════════════
+     DASHBOARD PAGE
+══════════════════════════════════════ -->
+<section id="page-dashboard" class="page-section">
+  <div class="dashboard-layout">
+
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+      <div class="dashboard-title-area">
+        <h1>Live Monitoring Dashboard</h1>
+        <p>BUS-001 · Route: Delhi-Jaipur · Luggage Bay A</p>
+      </div>
+      <div class="dashboard-meta">
+        <div class="meta-item">
+          <span class="meta-label">System Time</span>
+          <span class="meta-value text-cyan" id="live-clock">--:--:--</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Last Update</span>
+          <span class="meta-value" id="last-update">--:--:--</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Controller</span>
+          <span class="meta-value text-green">ESP32</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Status</span>
+          <span class="status-badge status-online">● ONLINE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 1: Main Status Cards -->
+    <div class="grid-4" style="margin-bottom:1.5rem;">
+
+      <div class="status-card-big green" id="door-card">
+        <span class="status-icon" id="door-icon">🔒</span>
+        <div class="status-label">Door Status</div>
+        <span class="status-value" id="door-status-val">CLOSED</span>
+        <div style="margin-top:0.8rem;">
+          <span class="status-badge status-online">✓ Secure</span>
+        </div>
+      </div>
+
+      <div class="status-card-big green" id="lock-card">
+        <span class="status-icon">🔐</span>
+        <div class="status-label">Lock Status</div>
+        <span class="status-value" id="lock-status-val">LOCKED</span>
+        <div style="margin-top:0.8rem;">
+          <span class="status-badge status-online">✓ Engaged</span>
+        </div>
+      </div>
+
+      <div class="status-card-big green" id="vib-card">
+        <span class="status-icon">📳</span>
+        <div class="status-label">Vibration</div>
+        <span class="status-value" id="vib-level-val">NORMAL</span>
+        <div style="margin-top:0.8rem;">
+          <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary)" id="vib-hz">12 Hz</span>
+        </div>
+      </div>
+
+      <div class="status-card-big cyan">
+        <span class="status-icon">📶</span>
+        <div class="status-label">Mobile Connection</div>
+        <span class="status-value">CONNECTED</span>
+        <div style="margin-top:0.8rem;">
+          <span class="font-mono" style="font-size:0.75rem; color:var(--text-secondary)">Ping: <span id="wifi-ping">14 ms</span></span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Row 2: Chart + Alerts -->
+    <div class="grid-2" style="margin-bottom:1.5rem;">
+
+      <!-- Vibration Chart -->
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <div>
+            <div class="font-display" style="font-size:0.9rem; color:var(--text-primary)">Vibration History</div>
+            <div class="font-mono" style="font-size:0.68rem; color:var(--text-secondary); margin-top:2px;">REAL-TIME · MPU6050 · Hz</div>
+          </div>
+          <span class="status-badge status-online">● LIVE</span>
+        </div>
+        <canvas id="vib-chart" width="500" height="180" style="width:100%; height:180px; border-radius:6px;"></canvas>
+        <div style="display:flex; justify-content:space-between; margin-top:0.8rem;">
+          <span class="font-mono" style="font-size:0.68rem; color:var(--text-muted)">▲ Danger Threshold: 25 Hz (dashed red)</span>
+          <span class="font-mono" style="font-size:0.68rem; color:var(--text-muted)">Last 60 readings</span>
+        </div>
+
+        <!-- Progress Meters -->
+        <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:0.8rem;">
+          <div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+              <span class="font-mono" style="font-size:0.72rem; color:var(--text-secondary)">Vibration Level</span>
+              <span class="font-mono text-green" style="font-size:0.72rem;" id="vib-pct">Normal</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill fill-green" id="vib-bar" style="width:20%"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+              <span class="font-mono" style="font-size:0.72rem; color:var(--text-secondary)">WiFi Signal Strength</span>
+              <span class="font-mono text-cyan" style="font-size:0.72rem;">87%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill fill-cyan" style="width:87%"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+              <span class="font-mono" style="font-size:0.72rem; color:var(--text-secondary)">Battery / Power</span>
+              <span class="font-mono" style="font-size:0.72rem; color:var(--accent-green);">USB Powered</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill fill-green" style="width:100%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alert Panel -->
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <div>
+            <div class="font-display" style="font-size:0.9rem; color:var(--text-primary)">Alert Panel</div>
+            <div class="font-mono" style="font-size:0.68rem; color:var(--text-secondary); margin-top:2px;">LIVE EVENT LOG</div>
+          </div>
+          <div style="display:flex; gap:0.5rem;">
+            <span class="status-badge status-danger">🔴 Critical</span>
+            <span class="status-badge status-warning">⚠ Warn</span>
+          </div>
+        </div>
+        <div class="alert-list" id="alert-list">
+          <!-- Populated by JS -->
+          <div style="text-align:center; color:var(--text-muted); font-family:var(--font-mono); font-size:0.78rem; padding:2rem;">
+            Waiting for events...
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Row 3: System Info -->
+    <div class="grid-3">
+      <div class="card">
+        <div class="font-display mb-2" style="font-size:0.9rem; color:var(--accent-cyan)">System Info</div>
+        <table style="width:100%; font-family:var(--font-mono); font-size:0.8rem;">
+          <tr><td style="color:var(--text-secondary); padding:6px 0; border-bottom:1px solid var(--border);">Microcontroller</td><td style="color:var(--text-primary); text-align:right;">ESP32 WROOM</td></tr>
+          <tr><td style="color:var(--text-secondary); padding:6px 0; border-bottom:1px solid var(--border);">Firmware</td><td style="color:var(--text-primary); text-align:right;">v1.2.4</td></tr>
+          <tr><td style="color:var(--text-secondary); padding:6px 0; border-bottom:1px solid var(--border);">Uptime</td><td style="color:var(--accent-green); text-align:right;">12h 34m</td></tr>
+          <tr><td style="color:var(--text-secondary); padding:6px 0; border-bottom:1px solid var(--border);">Bus ID</td><td style="color:var(--text-primary); text-align:right;">BUS-001</td></tr>
+          <tr><td style="color:var(--text-secondary); padding:6px 0;">IP Address</td><td style="color:var(--text-primary); text-align:right;">192.168.1.42</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="font-display mb-2" style="font-size:0.9rem; color:var(--accent-cyan)">Sensor Health</div>
+        <div style="display:flex; flex-direction:column; gap:0.8rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary);">📳 MPU6050</span>
+            <span class="status-badge status-online">OK</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary);">🔘 Reed Switch</span>
+            <span class="status-badge status-online">OK</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary);">📷 ESP32-CAM</span>
+            <span class="status-badge status-online">OK</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary);">🔔 Buzzer</span>
+            <span class="status-badge status-online">OK</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary);">💡 LED Array</span>
+            <span class="status-badge status-online">OK</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="font-display mb-2" style="font-size:0.9rem; color:var(--accent-cyan)">Notification Service</div>
+        <div style="display:flex; flex-direction:column; gap:0.8rem;">
+          <div style="display:flex; justify-content:space-between;">
+            <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary);">WiFi</span>
+            <span class="status-badge status-online">ONLINE</span>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary);">Mobile App</span>
+            <span class="status-badge status-online">ACTIVE</span>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary);">Buzzer Alert</span>
+            <span class="status-badge status-online">READY</span>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary);">LED Status</span>
+            <span class="status-badge status-online">GREEN</span>
+          </div>
+        </div>
+        <div style="margin-top:1rem; padding:0.8rem; background:var(--bg-secondary); border-radius:6px; border:1px solid rgba(0,255,157,0.2);">
+          <div class="font-mono" style="font-size:0.7rem; color:var(--accent-green);">✅ All systems nominal</div>
+          <div class="font-mono" style="font-size:0.65rem; color:var(--text-muted); margin-top:3px;">Door secure · No issues detected</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SYSTEM ARCHITECTURE PAGE
+══════════════════════════════════════ -->
+<section id="page-architecture" class="page-section">
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag">Technical Design</span>
+      <h2 class="section-title">System Architecture</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="grid-2">
+
+      <!-- Architecture Diagram -->
+      <div class="arch-diagram">
+        <div class="arch-node">
+          <span class="arch-node-icon">🔬</span>
+          <div>
+            <div class="arch-node-label">Sensor Layer</div>
+            <div class="arch-node-sub">MPU6050 · Reed Switch · Camera</div>
+          </div>
+        </div>
+        <div class="arch-arrow"><div class="arch-arrow-line"></div>▼</div>
+        <div class="arch-node">
+          <span class="arch-node-icon">💻</span>
+          <div>
+            <div class="arch-node-label">Microcontroller</div>
+            <div class="arch-node-sub">ESP32 / Arduino Uno</div>
+          </div>
+        </div>
+        <div class="arch-arrow"><div class="arch-arrow-line"></div>▼</div>
+        <div class="arch-node">
+          <span class="arch-node-icon">⚙️</span>
+          <div>
+            <div class="arch-node-label">Data Processing</div>
+            <div class="arch-node-sub">Threshold · Filtering · Analysis</div>
+          </div>
+        </div>
+        <div class="arch-arrow"><div class="arch-arrow-line"></div>▼</div>
+        <div class="arch-node">
+          <span class="arch-node-icon">🚨</span>
+          <div>
+            <div class="arch-node-label">Alert Engine</div>
+            <div class="arch-node-sub">Buzzer · LED · WiFi Push</div>
+          </div>
+        </div>
+        <div class="arch-arrow"><div class="arch-arrow-line"></div>▼</div>
+        <div class="arch-node">
+          <span class="arch-node-icon">📊</span>
+          <div>
+            <div class="arch-node-label">Web Dashboard</div>
+            <div class="arch-node-sub">Live Monitoring · History · Logs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hardware List -->
+      <div style="display:flex; flex-direction:column; gap:1rem;">
+        <div class="section-header" style="margin-bottom:1rem;">
+          <span class="section-tag">Hardware Stack</span>
+          <h3 class="section-title" style="font-size:1.4rem;">Components Used</h3>
+        </div>
+        <div class="card">
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <span style="font-size:2rem;">💻</span>
+            <div>
+              <div class="font-display" style="font-size:0.9rem; color:var(--accent-cyan)">ESP32 WROOM</div>
+              <div class="font-mono" style="font-size:0.75rem; color:var(--text-secondary)">Main controller · WiFi + Bluetooth · Dual-core · 240 MHz</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <span style="font-size:2rem;">📳</span>
+            <div>
+              <div class="font-display" style="font-size:0.9rem; color:var(--accent-cyan)">MPU6050</div>
+              <div class="font-mono" style="font-size:0.75rem; color:var(--text-secondary)">3-axis accelerometer + gyroscope · I²C interface · 16-bit ADC</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <span style="font-size:2rem;">🔘</span>
+            <div>
+              <div class="font-display" style="font-size:0.9rem; color:var(--accent-cyan)">Magnetic Reed Switch</div>
+              <div class="font-mono" style="font-size:0.75rem; color:var(--text-secondary)">Door open/closed detection · Normally closed type</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <span style="font-size:2rem;">📷</span>
+            <div>
+              <div class="font-display" style="font-size:0.9rem; color:var(--accent-cyan)">ESP32-CAM</div>
+              <div class="font-mono" style="font-size:0.75rem; color:var(--text-secondary)">Visual verification module · OV2640 camera · JPEG stream</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <span style="font-size:2rem;">🔔</span>
+            <div>
+              <div class="font-display" style="font-size:0.9rem; color:var(--accent-cyan)">Buzzer + LED Indicators</div>
+              <div class="font-mono" style="font-size:0.75rem; color:var(--text-secondary)">Audible + visual alerts · Green/Yellow/Red states</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SENSORS PAGE
+══════════════════════════════════════ -->
+<section id="page-sensors" class="page-section">
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag">Hardware</span>
+      <h2 class="section-title">Sensors Used</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="grid-3">
+
+      <!-- Vibration Sensor -->
+      <div class="sensor-card">
+        <div class="sensor-header">
+          <div class="sensor-icon">📳</div>
+          <div>
+            <div class="sensor-name">Vibration Sensor</div>
+            <div class="sensor-model">MPU6050 — Accelerometer + Gyroscope</div>
+          </div>
+        </div>
+        <div class="sensor-body">
+          <p class="sensor-desc">
+            The MPU6050 is a 6-axis motion tracking chip that detects acceleration and angular velocity. It captures vibration amplitude and frequency to identify abnormal door behaviour, loose latch, or vibrations from an impact.
+          </p>
+          <div class="sensor-specs">
+            <div class="spec-row"><span class="spec-key">Interface</span><span class="spec-val">I²C</span></div>
+            <div class="spec-row"><span class="spec-key">Voltage</span><span class="spec-val">3.3V / 5V</span></div>
+            <div class="spec-row"><span class="spec-key">ADC Resolution</span><span class="spec-val">16-bit</span></div>
+            <div class="spec-row"><span class="spec-key">Axes</span><span class="spec-val">3-axis Accel + Gyro</span></div>
+            <div class="spec-row"><span class="spec-key">Purpose</span><span class="spec-val">Vibration Detection</span></div>
+            <div class="spec-row"><span class="spec-key">Price</span><span class="spec-val text-green">₹173</span></div>
+          </div>
+          <div style="margin-top:1.2rem;">
+            <div class="font-mono" style="font-size:0.68rem; color:var(--text-secondary); margin-bottom:0.5rem; letter-spacing:1px;">USE CASES</div>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+              <span class="status-badge status-info">Loose Door</span>
+              <span class="status-badge status-info">Abnormal Vib</span>
+              <span class="status-badge status-info">Wear Prediction</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Door Position Sensor -->
+      <div class="sensor-card">
+        <div class="sensor-header">
+          <div class="sensor-icon">🔘</div>
+          <div>
+            <div class="sensor-name">Door Position Sensor</div>
+            <div class="sensor-model">Magnetic Reed Switch</div>
+          </div>
+        </div>
+        <div class="sensor-body">
+          <p class="sensor-desc">
+            A magnetic reed switch uses a permanent magnet attached to the door and a switch mounted on the frame. When the magnet is in proximity, the switch closes, indicating the door is closed. Separation signals an open state.
+          </p>
+          <div class="sensor-specs">
+            <div class="spec-row"><span class="spec-key">Type</span><span class="spec-val">Normally Closed (NC)</span></div>
+            <div class="spec-row"><span class="spec-key">Operating Voltage</span><span class="spec-val">5V DC</span></div>
+            <div class="spec-row"><span class="spec-key">Response Time</span><span class="spec-val">&lt;1 ms</span></div>
+            <div class="spec-row"><span class="spec-key">Magnet on</span><span class="spec-val">Door</span></div>
+            <div class="spec-row"><span class="spec-key">Switch on</span><span class="spec-val">Door Frame</span></div>
+            <div class="spec-row"><span class="spec-key">Price</span><span class="spec-val text-green">₹121</span></div>
+          </div>
+          <div style="margin-top:1.2rem;">
+            <div style="display:flex; gap:1rem;">
+              <div style="background:rgba(0,255,157,0.1); border:1px solid rgba(0,255,157,0.2); border-radius:6px; padding:0.6rem 1rem; flex:1; text-align:center;">
+                <div class="font-mono text-green" style="font-size:0.7rem;">MAGNET NEAR</div>
+                <div class="font-mono" style="font-size:0.65rem; color:var(--text-secondary); margin-top:2px;">→ Door CLOSED</div>
+              </div>
+              <div style="background:rgba(255,45,85,0.1); border:1px solid rgba(255,45,85,0.2); border-radius:6px; padding:0.6rem 1rem; flex:1; text-align:center;">
+                <div class="font-mono text-red" style="font-size:0.7rem;">MAGNET AWAY</div>
+                <div class="font-mono" style="font-size:0.65rem; color:var(--text-secondary); margin-top:2px;">→ Door OPEN</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Camera Module -->
+      <div class="sensor-card">
+        <div class="sensor-header">
+          <div class="sensor-icon">📷</div>
+          <div>
+            <div class="sensor-name">Camera Module</div>
+            <div class="sensor-model">ESP32-CAM — OV2640</div>
+          </div>
+        </div>
+        <div class="sensor-body">
+          <p class="sensor-desc">
+            The ESP32-CAM provides visual confirmation of door conditions. It streams live video and captures image evidence during fault events. Integrated with the same ESP32 platform for seamless connectivity.
+          </p>
+          <div class="sensor-specs">
+            <div class="spec-row"><span class="spec-key">Camera Chip</span><span class="spec-val">OV2640</span></div>
+            <div class="spec-row"><span class="spec-key">Resolution</span><span class="spec-val">2MP (1600×1200)</span></div>
+            <div class="spec-row"><span class="spec-key">Output</span><span class="spec-val">JPEG / MJPEG Stream</span></div>
+            <div class="spec-row"><span class="spec-key">Storage</span><span class="spec-val">MicroSD slot</span></div>
+            <div class="spec-row"><span class="spec-key">WiFi</span><span class="spec-val">Built-in 802.11b/g/n</span></div>
+            <div class="spec-row"><span class="spec-key">Price</span><span class="spec-val text-green">₹444</span></div>
+          </div>
+          <div style="margin-top:1.2rem;">
+            <div class="font-mono" style="font-size:0.68rem; color:var(--text-secondary); margin-bottom:0.5rem; letter-spacing:1px;">FEATURES</div>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+              <span class="status-badge status-info">Live Video</span>
+              <span class="status-badge status-info">Image Capture</span>
+              <span class="status-badge status-info">Evidence Log</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     ALERTS PAGE
+══════════════════════════════════════ -->
+<section id="page-alerts" class="page-section">
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag">Safety System</span>
+      <h2 class="section-title">Alert System</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:2rem;">
+
+      <div>
+        <p style="color:var(--text-secondary); line-height:1.7; margin-bottom:2rem;">
+          The alert system is the safety backbone of the monitoring system. When sensor data crosses defined thresholds,
+          alerts are triggered through multiple output channels to ensure the driver and fleet manager are immediately informed.
+        </p>
+
+        <!-- Alert Types Table -->
+        <div class="card">
+          <div class="font-display mb-3" style="font-size:0.95rem; color:var(--accent-cyan)">Alert Levels</div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Level</th>
+                <th>Trigger</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="status-badge status-online">✅ Normal</span></td>
+                <td>Door secured, vibration low</td>
+                <td>Green LED · Dashboard OK</td>
+              </tr>
+              <tr>
+                <td><span class="status-badge status-warning">⚠ Warning</span></td>
+                <td>Elevated vibration or loose latch</td>
+                <td>Yellow LED · Soft buzzer</td>
+              </tr>
+              <tr>
+                <td><span class="status-badge status-danger">🚨 Critical</span></td>
+                <td>Door open while moving</td>
+                <td>Red LED · Loud buzzer · Push alert</td>
+              </tr>
+              <tr>
+                <td><span class="status-badge status-info">ℹ Sensor Fail</span></td>
+                <td>Sensor disconnection</td>
+                <td>Orange LED · System alert</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:1.5rem;">
+        <!-- Alert Output Devices -->
+        <div class="card">
+          <div class="font-display mb-3" style="font-size:0.95rem; color:var(--accent-cyan)">Output Devices</div>
+          <div style="display:flex; flex-direction:column; gap:1rem;">
+            <div style="display:flex; gap:1rem; align-items:center;">
+              <span style="font-size:2rem;">🔔</span>
+              <div>
+                <div class="font-display" style="font-size:0.85rem; color:var(--text-primary);">Buzzer</div>
+                <div class="font-mono" style="font-size:0.72rem; color:var(--text-secondary)">Audible alarm — different tones for warning vs critical</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:1rem; align-items:center;">
+              <span style="font-size:2rem;">💡</span>
+              <div>
+                <div class="font-display" style="font-size:0.85rem; color:var(--text-primary);">LED Indicators</div>
+                <div class="font-mono" style="font-size:0.72rem; color:var(--text-secondary)">RGB LED — Green (safe), Yellow (warning), Red (critical)</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:1rem; align-items:center;">
+              <span style="font-size:2rem;">📱</span>
+              <div>
+                <div class="font-display" style="font-size:0.85rem; color:var(--text-primary);">Mobile Push</div>
+                <div class="font-mono" style="font-size:0.72rem; color:var(--text-secondary)">WiFi push notification via ESP32 to driver's phone</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:1rem; align-items:center;">
+              <span style="font-size:2rem;">📊</span>
+              <div>
+                <div class="font-display" style="font-size:0.85rem; color:var(--text-primary);">Dashboard Log</div>
+                <div class="font-mono" style="font-size:0.72rem; color:var(--text-secondary)">All events recorded with timestamp to web dashboard</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Alert Feed -->
+        <div class="card">
+          <div class="font-display mb-2" style="font-size:0.9rem; color:var(--accent-cyan)">Sample Alerts</div>
+          <div class="alert-list">
+            <div class="alert-item critical">
+              <span class="alert-icon">🚨</span>
+              <div class="alert-text">
+                <div class="alert-title">Door Open While Bus Moving</div>
+                <div class="alert-time">CRITICAL — Immediate action required</div>
+              </div>
+            </div>
+            <div class="alert-item warning">
+              <span class="alert-icon">⚠️</span>
+              <div class="alert-text">
+                <div class="alert-title">High Vibration Detected — Door Latch May Be Loose</div>
+                <div class="alert-time">WARNING — Inspect at next stop</div>
+              </div>
+            </div>
+            <div class="alert-item warning">
+              <span class="alert-icon">⚡</span>
+              <div class="alert-text">
+                <div class="alert-title">Sensor Noise: MPU6050 Reading Fluctuating</div>
+                <div class="alert-time">WARNING — Possible cable issue</div>
+              </div>
+            </div>
+            <div class="alert-item normal">
+              <span class="alert-icon">✅</span>
+              <div class="alert-text">
+                <div class="alert-title">Door Secure — System Check Passed</div>
+                <div class="alert-time">INFO — All systems normal</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     PROJECT WORKING PAGE
+══════════════════════════════════════ -->
+<section id="page-working" class="page-section">
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag">How It Works</span>
+      <h2 class="section-title">Project Working</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:3rem;">
+      <div>
+        <p style="color:var(--text-secondary); line-height:1.8; font-size:0.95rem; margin-bottom:1.5rem;">
+          The system continuously monitors the luggage compartment door using multiple sensors operating in parallel. The ESP32 microcontroller reads data from the MPU6050 vibration sensor and the magnetic reed switch every 500ms.
+        </p>
+        <p style="color:var(--text-secondary); line-height:1.8; font-size:0.95rem; margin-bottom:1.5rem;">
+          If abnormal vibration (above threshold) or door opening is detected while the bus is in motion, the system immediately triggers the buzzer and LED indicators to alert the driver. Simultaneously, the event is logged to the web dashboard with a timestamp.
+        </p>
+        <p style="color:var(--text-secondary); line-height:1.8; font-size:0.95rem;">
+          The ESP32-CAM captures a photograph of the door condition during any fault event, providing visual evidence for maintenance records. All data is transmitted over WiFi to the monitoring dashboard.
+        </p>
+      </div>
+
+      <!-- Operation Flow -->
+      <div class="card">
+        <div class="font-display mb-3" style="color:var(--accent-cyan); font-size:0.95rem;">Operation Flow</div>
+        <div style="display:flex; flex-direction:column; gap:0.8rem;">
+          <div style="display:flex; gap:1rem; align-items:flex-start;">
+            <div style="width:32px; height:32px; border-radius:50%; background:rgba(0,229,255,0.2); border:1px solid var(--accent-cyan); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:0.8rem; color:var(--accent-cyan); flex-shrink:0;">1</div>
+            <div>
+              <div class="font-display" style="font-size:0.82rem; color:var(--text-primary); margin-bottom:2px;">Power On & Init</div>
+              <div class="font-mono" style="font-size:0.72rem; color:var(--text-secondary)">ESP32 boots, connects WiFi, initializes all sensors</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:1rem; align-items:flex-start;">
+            <div style="width:32px; height:32px; border-radius:50%; background:rgba(0,229,255,0.2); border:1px solid var(--accent-cyan); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:0.8rem; color:var(--accent-cyan); flex-shrink:0;">2</div>
+            <div>
+              <div class="font-display" style="font-size:0.82rem; color:var(--text-primary); margin-bottom:2px;">Continuous Sensing</div>
+              <div class="font-mono" style="font-size:0.72rem; color:var(--text-secondary)">Read reed switch & MPU6050 every 500ms</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:1rem; align-items:flex-start;">
+            <div style="width:32px; height:32px; border-radius:50%; background:rgba(0,229,255,0.2); border:1px solid var(--accent-cyan); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:0.8rem; color:var(--accent-cyan); flex-shrink:0;">3</div>
+            <div>
+              <div class="font-display" style="font-size:0.82rem; color:var(--text-primary); margin-bottom:2px;">Threshold Check</div>
+              <div class="font-mono" style="font-size:0.72rem; color:var(--text-secondary)">Compare readings against normal/warning/critical thresholds</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:1rem; align-items:flex-start;">
+            <div style="width:32px; height:32px; border-radius:50%; background:rgba(255,45,85,0.15); border:1px solid var(--accent-red); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:0.8rem; color:var(--accent-red); flex-shrink:0;">4</div>
+            <div>
+              <div class="font-display" style="font-size:0.82rem; color:var(--accent-red); margin-bottom:2px;">Fault Detected</div>
+              <div class="font-mono" style="font-size:0.72rem; color:var(--text-secondary)">Trigger buzzer, LED, capture camera image, send push alert</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:1rem; align-items:flex-start;">
+            <div style="width:32px; height:32px; border-radius:50%; background:rgba(0,229,255,0.2); border:1px solid var(--accent-cyan); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:0.8rem; color:var(--accent-cyan); flex-shrink:0;">5</div>
+            <div>
+              <div class="font-display" style="font-size:0.82rem; color:var(--text-primary); margin-bottom:2px;">Log & Report</div>
+              <div class="font-mono" style="font-size:0.72rem; color:var(--text-secondary)">Event stored in dashboard with timestamp & sensor readings</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature Cards -->
+    <div class="grid-3">
+      <div class="card">
+        <div style="font-size:2.5rem; margin-bottom:1rem;">⚡</div>
+        <h3 class="font-display mb-2" style="font-size:0.9rem; color:var(--accent-cyan)">Real-Time Detection</h3>
+        <p class="text-muted" style="font-size:0.85rem; line-height:1.6">Sensor readings are processed every 500ms ensuring sub-second fault detection and alerting.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:2.5rem; margin-bottom:1rem;">📡</div>
+        <h3 class="font-display mb-2" style="font-size:0.9rem; color:var(--accent-cyan)">WiFi Connectivity</h3>
+        <p class="text-muted" style="font-size:0.85rem; line-height:1.6">Built-in WiFi on ESP32 enables wireless data transmission to the dashboard and mobile devices.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:2.5rem; margin-bottom:1rem;">💾</div>
+        <h3 class="font-display mb-2" style="font-size:0.9rem; color:var(--accent-cyan)">Event Logging</h3>
+        <p class="text-muted" style="font-size:0.85rem; line-height:1.6">Every fault event is logged with timestamp, sensor values, and camera snapshot for maintenance records.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     COST PAGE
+══════════════════════════════════════ -->
+<section id="page-cost" class="page-section">
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag">Budget</span>
+      <h2 class="section-title">Project Cost Breakdown</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card" style="overflow:auto;">
+        <div class="font-display mb-3" style="font-size:0.95rem; color:var(--accent-cyan)">Component Pricing</div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Quantity</th>
+              <th>Purpose</th>
+              <th>Price (INR)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>MPU6050</td>
+              <td>1</td>
+              <td>Vibration Sensor</td>
+              <td class="price">₹173</td>
+            </tr>
+            <tr>
+              <td>Magnetic Reed Switch</td>
+              <td>1</td>
+              <td>Door Position</td>
+              <td class="price">₹121</td>
+            </tr>
+            <tr>
+              <td>ESP32 WROOM</td>
+              <td>1</td>
+              <td>Main Controller</td>
+              <td class="price">₹378</td>
+            </tr>
+            <tr>
+              <td>Arduino Uno</td>
+              <td>1</td>
+              <td>Backup / Testing</td>
+              <td class="price">₹230</td>
+            </tr>
+            <tr>
+              <td>ESP32-CAM</td>
+              <td>1</td>
+              <td>Camera Module</td>
+              <td class="price">₹444</td>
+            </tr>
+            <tr>
+              <td>Buzzer</td>
+              <td>1</td>
+              <td>Audio Alert</td>
+              <td class="price">₹55</td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-muted); font-size:0.7rem;">Jumper Wires + Misc</td>
+              <td style="color:var(--text-muted);">—</td>
+              <td style="color:var(--text-muted);">Connections</td>
+              <td class="price">~₹0</td>
+            </tr>
+            <tr style="background:rgba(0,229,255,0.05);">
+              <td colspan="3" style="color:var(--accent-cyan); font-family:var(--font-display); font-size:0.82rem; font-weight:700;">TOTAL ESTIMATE</td>
+              <td class="price" style="color:var(--accent-green); font-size:1rem; font-weight:700;">₹1,401</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:1.5rem;">
+        <div class="card">
+          <div class="font-display mb-2" style="font-size:0.9rem; color:var(--accent-cyan)">Cost Highlights</div>
+          <div style="display:flex; flex-direction:column; gap:1rem; margin-top:0.5rem;">
+            <div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary);">ESP32-CAM (Largest cost)</span>
+                <span class="font-mono" style="font-size:0.78rem; color:var(--accent-green);">₹444 — 32%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill fill-orange" style="width:32%"></div></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary);">ESP32 Controller</span>
+                <span class="font-mono" style="font-size:0.78rem; color:var(--accent-green);">₹378 — 27%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill fill-cyan" style="width:27%"></div></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary);">Arduino Uno</span>
+                <span class="font-mono" style="font-size:0.78rem; color:var(--accent-green);">₹230 — 16%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill fill-cyan" style="width:16%"></div></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary);">MPU6050 Sensor</span>
+                <span class="font-mono" style="font-size:0.78rem; color:var(--accent-green);">₹173 — 12%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill fill-green" style="width:12%"></div></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary);">Reed Switch + Buzzer</span>
+                <span class="font-mono" style="font-size:0.78rem; color:var(--accent-green);">₹176 — 13%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill fill-green" style="width:13%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="background:rgba(0,255,157,0.05); border-color:rgba(0,255,157,0.25);">
+          <div class="font-display mb-2" style="font-size:0.9rem; color:var(--accent-green)">💰 Budget Advantage</div>
+          <p class="font-mono" style="font-size:0.8rem; color:var(--text-secondary); line-height:1.7;">
+            At under ₹1,500 per bus unit, this system provides enterprise-grade door safety monitoring at a fraction of commercial solutions. Easily scalable across entire fleets.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     TIMELINE PAGE
+══════════════════════════════════════ -->
+<section id="page-timeline" class="page-section">
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag">Project Management</span>
+      <h2 class="section-title">Project Timeline</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:3rem;">
+      <!-- Timeline -->
+      <div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot done"></div>
+            <div class="timeline-content">
+              <div class="timeline-phase">Phase 1 — Research</div>
+              <div class="timeline-dates">📅 Week 1–2</div>
+              <div class="timeline-desc">Literature review of existing bus door systems. Study of MPU6050, reed switch, and ESP32 documentation. Team roles assigned.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot done"></div>
+            <div class="timeline-content">
+              <div class="timeline-phase">Phase 2 — Planning</div>
+              <div class="timeline-dates">📅 Week 3–4</div>
+              <div class="timeline-desc">System architecture finalized. Component list and cost estimation prepared. Hardware procurement initiated.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot done"></div>
+            <div class="timeline-content">
+              <div class="timeline-phase">Phase 3 — PPT Preparation</div>
+              <div class="timeline-dates">📅 Week 5</div>
+              <div class="timeline-desc">Presentation deck created. System diagrams, flowcharts, and circuit diagrams designed. Prototype images included.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot active"></div>
+            <div class="timeline-content">
+              <div class="timeline-phase" style="color:var(--accent-green)">Phase 4 — Mentor Review ← Current</div>
+              <div class="timeline-dates">📅 Week 6</div>
+              <div class="timeline-desc">Project walkthrough with mentor. Feedback incorporated. Website and dashboard built. Final documentation prepared.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-phase" style="color:var(--text-secondary)">Phase 5 — Rehearsal</div>
+              <div class="timeline-dates">📅 Week 7</div>
+              <div class="timeline-desc">Full demonstration rehearsal. Presentation practice sessions. Technical Q&A preparation by all team members.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-phase" style="color:var(--text-secondary)">Phase 6 — Final Presentation</div>
+              <div class="timeline-dates">📅 Week 8</div>
+              <div class="timeline-desc">Live demonstration to panel. System walkthrough, Q&A, and project submission.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gantt Chart -->
+      <div class="card" style="overflow-x:auto;">
+        <div class="font-display mb-3" style="font-size:0.95rem; color:var(--accent-cyan)">Gantt Chart</div>
+        <table class="gantt-table">
+          <thead>
+            <tr>
+              <th style="text-align:left; min-width:120px;">Phase</th>
+              <th>W1</th><th>W2</th><th>W3</th><th>W4</th>
+              <th>W5</th><th>W6</th><th>W7</th><th>W8</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Research</td>
+              <td colspan="2"><div class="gantt-bar cyan">Research</div></td>
+              <td colspan="6"></td>
+            </tr>
+            <tr>
+              <td>Planning</td>
+              <td colspan="2"></td>
+              <td colspan="2"><div class="gantt-bar green">Planning</div></td>
+              <td colspan="4"></td>
+            </tr>
+            <tr>
+              <td>PPT Prep</td>
+              <td colspan="4"></td>
+              <td colspan="1"><div class="gantt-bar orange">PPT</div></td>
+              <td colspan="3"></td>
+            </tr>
+            <tr>
+              <td>Mentor Review</td>
+              <td colspan="5"></td>
+              <td colspan="1"><div class="gantt-bar yellow">Review</div></td>
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td>Rehearsal</td>
+              <td colspan="6"></td>
+              <td colspan="1"><div class="gantt-bar purple">Rehearse</div></td>
+              <td colspan="1"></td>
+            </tr>
+            <tr>
+              <td>Presentation</td>
+              <td colspan="7"></td>
+              <td colspan="1"><div class="gantt-bar cyan">Present</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     TEAM PAGE
+══════════════════════════════════════ -->
+<section id="page-team" class="page-section">
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag">People</span>
+      <h2 class="section-title">Meet the Team</h2>
+      <div class="section-line"></div>
+      <p style="color:var(--text-secondary); margin-top:1rem; font-size:0.9rem;">NIIT University · Synapse Project · 10 Members</p>
+    </div>
+    <div class="grid-4">
+
+      <div class="team-card">
+        <div class="team-avatar">PV</div>
+        <div class="team-name">Parth Verma</div>
+        <div class="team-role">Project Manager</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar" style="background: linear-gradient(135deg, #00ff9d, #00bbff);">SN</div>
+        <div class="team-name">Swayam Nayak</div>
+        <div class="team-role">Critical Thinker</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar" style="background: linear-gradient(135deg, #ff6b00, #ffaa00);">NY</div>
+        <div class="team-name">Nigidalala Y. Ram</div>
+        <div class="team-role">Critical Thinker</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar" style="background: linear-gradient(135deg, #7700cc, #cc44ff);">NS</div>
+        <div class="team-name">Neel Singh</div>
+        <div class="team-role">Researcher</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar" style="background: linear-gradient(135deg, #ff2d55, #ff6b8a);">HG</div>
+        <div class="team-name">Harsh Gupta</div>
+        <div class="team-role">Researcher</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar" style="background: linear-gradient(135deg, #00aaff, #0055cc);">KA</div>
+        <div class="team-name">Khan Mohd Aasif</div>
+        <div class="team-role">Product Manager</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar" style="background: linear-gradient(135deg, #00cc88, #006644);">YK</div>
+        <div class="team-name">Yoshiha. K</div>
+        <div class="team-role">Product Manager</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar" style="background: linear-gradient(135deg, #ffaa00, #ff6600);">DK</div>
+        <div class="team-name">D. Karthik</div>
+        <div class="team-role">Developing Head</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar" style="background: linear-gradient(135deg, #0088ff, #00aaff);">VS</div>
+        <div class="team-name">Vipul Sardana</div>
+        <div class="team-role">Developing Head</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar" style="background: linear-gradient(135deg, #cc44ff, #ff44aa);">KG</div>
+        <div class="team-name">Komal Gupta</div>
+        <div class="team-role">Documentator</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     GALLERY PAGE
+══════════════════════════════════════ -->
+<section id="page-gallery" class="page-section">
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag">Visual Assets</span>
+      <h2 class="section-title">Project Gallery</h2>
+      <div class="section-line"></div>
+      <p style="color:var(--text-secondary); margin-top:1rem; font-size:0.85rem; font-family:var(--font-mono);">Replace placeholder blocks with actual project images</p>
+    </div>
+    <div class="gallery-grid">
+
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span>🔄</span>
+          <span class="font-mono" style="font-size:0.7rem; color:var(--text-secondary);">SYSTEM FLOWCHART</span>
+        </div>
+        <div class="gallery-caption">System Flowchart — End-to-end process flow of the monitoring system</div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span>⚡</span>
+          <span class="font-mono" style="font-size:0.7rem; color:var(--text-secondary);">CIRCUIT DIAGRAM</span>
+        </div>
+        <div class="gallery-caption">Circuit Diagram — ESP32, MPU6050, reed switch wiring layout</div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span>📳</span>
+          <span class="font-mono" style="font-size:0.7rem; color:var(--text-secondary);">MPU6050 SENSOR</span>
+        </div>
+        <div class="gallery-caption">MPU6050 — Vibration & accelerometer sensor module</div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span>🔘</span>
+          <span class="font-mono" style="font-size:0.7rem; color:var(--text-secondary);">REED SWITCH</span>
+        </div>
+        <div class="gallery-caption">Magnetic Reed Switch — Door position detection module</div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span>📊</span>
+          <span class="font-mono" style="font-size:0.7rem; color:var(--text-secondary);">GANTT CHART</span>
+        </div>
+        <div class="gallery-caption">Gantt Chart — Project timeline and milestone planning</div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span>🏗️</span>
+          <span class="font-mono" style="font-size:0.7rem; color:var(--text-secondary);">SYSTEM ARCHITECTURE</span>
+        </div>
+        <div class="gallery-caption">System Architecture — Hardware integration block diagram</div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span>📷</span>
+          <span class="font-mono" style="font-size:0.7rem; color:var(--text-secondary);">ESP32-CAM MODULE</span>
+        </div>
+        <div class="gallery-caption">ESP32-CAM — Camera module for visual door verification</div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span>💻</span>
+          <span class="font-mono" style="font-size:0.7rem; color:var(--text-secondary);">ESP32 CONTROLLER</span>
+        </div>
+        <div class="gallery-caption">ESP32 WROOM — Main microcontroller of the system</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CONTACT PAGE
+══════════════════════════════════════ -->
+<section id="page-contact" class="page-section">
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag">Get In Touch</span>
+      <h2 class="section-title">Contact Us</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div class="card mb-3">
+          <div class="font-display mb-3" style="font-size:0.95rem; color:var(--accent-cyan)">Project Details</div>
+          <div style="display:flex; flex-direction:column; gap:0.8rem;">
+            <div style="display:flex; gap:1rem;">
+              <span>🏫</span>
+              <div>
+                <div class="font-mono" style="font-size:0.7rem; color:var(--text-muted); letter-spacing:1px;">UNIVERSITY</div>
+                <div style="color:var(--text-primary); font-size:0.9rem;">NIIT University, Neemrana</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:1rem;">
+              <span>🔬</span>
+              <div>
+                <div class="font-mono" style="font-size:0.7rem; color:var(--text-muted); letter-spacing:1px;">PROGRAM</div>
+                <div style="color:var(--text-primary); font-size:0.9rem;">Synapse Project</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:1rem;">
+              <span>🚌</span>
+              <div>
+                <div class="font-mono" style="font-size:0.7rem; color:var(--text-muted); letter-spacing:1px;">PROJECT</div>
+                <div style="color:var(--text-primary); font-size:0.9rem;">Bus Luggage Compartment Door Monitoring System</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:1rem;">
+              <span>👥</span>
+              <div>
+                <div class="font-mono" style="font-size:0.7rem; color:var(--text-muted); letter-spacing:1px;">TEAM SIZE</div>
+                <div style="color:var(--text-primary); font-size:0.9rem;">10 Members</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="background:rgba(0,229,255,0.04); border-color:rgba(0,229,255,0.2);">
+          <div class="font-mono" style="font-size:0.72rem; color:var(--accent-cyan); margin-bottom:0.8rem; letter-spacing:2px;">SYSTEM STATUS</div>
+          <div style="display:flex; flex-direction:column; gap:0.5rem;">
+            <div style="display:flex; justify-content:space-between;">
+              <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary);">Website</span>
+              <span class="status-badge status-online">● ONLINE</span>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary);">Dashboard</span>
+              <span class="status-badge status-online">● ACTIVE</span>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span class="font-mono" style="font-size:0.78rem; color:var(--text-secondary);">Sensors</span>
+              <span class="status-badge status-online">● RUNNING</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="font-display mb-3" style="font-size:0.95rem; color:var(--accent-cyan)">Send a Message</div>
+        <div class="contact-form">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input class="form-input" type="text" placeholder="Enter your name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input class="form-input" type="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <input class="form-input" type="text" placeholder="Project inquiry..." />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" placeholder="Your message here..."></textarea>
+          </div>
+          <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="alert('Thank you for your message! (Demo only — no backend connected)')">
+            📨 Send Message
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-title">🚌 BusDoor Monitor</div>
+      <p class="footer-desc">
+        An IoT-based bus luggage compartment door monitoring system developed as part of the NIIT University Synapse Project. Real-time safety through embedded sensing.
+      </p>
+    </div>
+    <div>
+      <div class="footer-heading">Navigation</div>
+      <ul class="footer-links">
+        <li><a href="#" onclick="showPage('page-home'); return false;">Home</a></li>
+        <li><a href="#" onclick="showPage('page-dashboard'); return false;">Live Dashboard</a></li>
+        <li><a href="#" onclick="showPage('page-architecture'); return false;">Architecture</a></li>
+        <li><a href="#" onclick="showPage('page-sensors'); return false;">Sensors</a></li>
+        <li><a href="#" onclick="showPage('page-team'); return false;">Team</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Project</div>
+      <ul class="footer-links">
+        <li><a href="#" onclick="showPage('page-alerts'); return false;">Alert System</a></li>
+        <li><a href="#" onclick="showPage('page-working'); return false;">How It Works</a></li>
+        <li><a href="#" onclick="showPage('page-cost'); return false;">Cost</a></li>
+        <li><a href="#" onclick="showPage('page-timeline'); return false;">Timeline</a></li>
+        <li><a href="#" onclick="showPage('page-contact'); return false;">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 NIIT University · Synapse Project · Bus Luggage Compartment Door Monitoring System · Built by Team of 10</span>
+  </div>
+</footer>
+
+</div><!-- end page-wrapper -->
+
+<script src="js/main.js"></script>
+</body>
+</html>
